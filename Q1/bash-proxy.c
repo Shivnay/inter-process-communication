@@ -4,36 +4,17 @@
 #include <stdlib.h> 
 #include <errno.h> 
 #include <sys/wait.h> 
-#include <string>
-//extract bash commands and place them in parallel arrays
-string getCMD(string cmd_str,string *cmd_root) {
-
-}
-//extract bash command paramaters and place them in parallel arrays
-string getParm(string cmd_str, string *cmd_parm) {
-
-}
-//return number of commands delimited by ';'
-int getCMDCount(string cmd_str) {
-    int num_cmd;
-    char* cmd; 
-    char* rest = cmd_str; 
-    //count num commands
-    while ((cmd = strtok_r(rest, " ", &rest))) 
-        num_cmd++;
-    
-    return num_cmd;
-}
 
 int main(int argc, char *argv[]){ 
     pid_t pid; 
     int ret = 1; 
     int status; 
-    //get total number of commands requested
-    cont int MAX_COMMANDS = getCMDCount(argv[0]);
-    //parallel arrays of commands and parameters
-    string cmd_root[MAX_COMMANDS];
-    string cmd_parm[MAX_COMMANDS];
+    //
+    char* cmd; 
+    char* rest = argv[0]; 
+  
+    while ((token = strtok_r(rest, " ", &rest))) 
+        printf("%s\n", token); 
     //populate commands and correspoding arguments
     //getCMD(argc, argv, cmd_root);
     
