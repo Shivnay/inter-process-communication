@@ -29,23 +29,22 @@ int main(int argc, char *argv[]) {
     int ret = 1; 
     int status; 
     //extract command root
-    char* cmd  = "/bin/"+argv[1];
+    char* cmd_raw = argv[1];
+    char* cmd = malloc(strlen(cmd_raw)+1+5); /* make space for the new string (should check the return value ...) */
+    strcpy(cmd, "/bin/"); /* copy name into the new var */
+    strcat(cmd, cmd_raw); /* add the extension */;
+
     if (validateCMD(cmd)) {
         //extract command parameters
         int PARMCOUNT = argc;
         //make sure arguments provided
         if (PARMCOUNT != 0) {
             char* parm[PARMCOUNT];
-            //assign command to first index
-            //parm[0] = cmd;
-            //fill parmater array
+            //fill parmater array in complience with execv argument standard
             for (int index = 0; index < argc; index++)
                 parm[index] = argv[index+1];
             //assign numm to end of argument list
             parm[PARMCOUNT-1] = NULL;
-            printf("%i\n", PARMCOUNT);
-            for (int index = 0; index < argc; index++)
-                printf("%s\n", parm[index]);
             //create child process to run command
             pid = fork(); 
             if (pid == -1) { 
