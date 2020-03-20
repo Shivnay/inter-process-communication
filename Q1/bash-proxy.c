@@ -63,18 +63,22 @@ int main(int argc, char *argv[]) {
                         if (WEXITSTATUS(status) == 127) { 
                             // execv failed 
                             printf("execv failed\n"); 
-                        } else
-                            printf("program terminated normally, but returned a non-zero status\n");				 
-                    } else
-                        printf("program didn't terminate normally\n");			 
-                } else
+                        } else {
+                            printf("program terminated normally, but returned a non-zero status\n");
+                        }
+                    } else {
+                        printf("program didn't terminate normally\n");
+                    }
+                } else {
                     printf("waitpid() failed\n"); 
-
+                }
                 exit(0); 
-            } else 
-                printf("bash command not supported");
-        } else 
-            printf("no arguments provided \n");
+            } else {
+                printf("bash command not supported\n");
+            }
+        } else {
+            printf("no arguments provided\n");
+        }
     }
     
     return 0; 
