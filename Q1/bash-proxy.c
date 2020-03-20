@@ -18,8 +18,8 @@ int main(int argc, char *argv[]){
         //skip root command
         if (token != cmd) {
             printf("%s\n", token); 
-            token  = strtok(NULL, " "); 
         }
+        token  = strtok(NULL, " "); 
     } 
     
     // pid = fork(); 
