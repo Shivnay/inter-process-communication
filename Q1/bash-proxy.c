@@ -21,7 +21,6 @@ bool validateCMD(char* cmd) {
         return true;
      else
         return false;
-    }
 }
 
 int main(int argc, char *argv[]){ 
@@ -30,7 +29,7 @@ int main(int argc, char *argv[]){
     int status; 
     //extract command root
     char* cmd  = argv[1];
-    if (validateCMD()) {
+    if (validateCMD(cmd)) {
         //extract command parameters
         int PARMCOUNT = argc - 2;
         //make sure arguments provided
