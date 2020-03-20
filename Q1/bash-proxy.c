@@ -11,17 +11,20 @@ int main(int argc, char *argv[]){
     int ret = 1; 
     int status; 
     //extract command root
-    char* cmd  = strtok(argv[1], " ");
+    char cmd[]  = argv[1];
     //extract command parameters
-    char* token  = strtok(argv[1], " ");
-    while (token  != NULL) { 
-        //skip root command
-        if (token != cmd) {
-            printf("%s\n", token); 
-        }
-        token  = strtok(NULL, " "); 
-    } 
+    cont int PARMCOUNT = argc - 2;
+    //make sure arguments provided
+    if (pramCount != 0) {
+        char* parm[PARMCOUNT];
+        //fill parmater array
+        for (int index = 2; index < argc; index++)
+            parm[index-2] = argv[index];
+    } else 
+        printf("no arguments provided");
     
+    printf("%s/n", cmd);
+    printf("%s/n", parm);
     // pid = fork(); 
     // if (pid == -1){ 
     //     //error occured 
