@@ -10,15 +10,15 @@
 //approved bash commands
 bool validateCMD(char cmd[]) {
     
-    if (cmd == "mkdir")
+    if (strcmp(cmd, "mkdir") == 0)
         return true;
-    if (cmd == "ls")
+    if (strcmp(cmd, "ls") == 0)
         return true;
-    if (cmd == "cp")
+    if (strcmp(cmd, "cp") == 0)
         return true;
-    if (cmd == "mv")
+    if (strcmp(cmd, "mv") == 0)
         return true;
-    if (cmd == "vi")
+    if (strcmp(cmd, "vi") == 0)
         return true;
     else
         return false;
@@ -32,13 +32,20 @@ int main(int argc, char *argv[]) {
     char* cmd  = argv[1];
     if (validateCMD(cmd)) {
         //extract command parameters
-        int PARMCOUNT = argc - 2;
+        int PARMCOUNT = argc;
         //make sure arguments provided
         if (PARMCOUNT != 0) {
             char* parm[PARMCOUNT];
+            //assign command to first index
+            //parm[0] = cmd;
             //fill parmater array
-            for (int index = 2; index < argc; index++)
-                parm[index-2] = argv[index];
+            for (int index = 0; index < argc; index++)
+                parm[index] = argv[index+1];
+            //assign numm to end of argument list
+            parm[PARMCOUNT-1] = NULL;
+
+            for (int index = 0; index < argc; index++)
+                printf("%s\n", parm[index]);
             //create child process to run command
             pid = fork(); 
             if (pid == -1) { 
