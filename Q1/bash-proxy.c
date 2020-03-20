@@ -10,15 +10,15 @@
 //approved bash commands
 bool validateCMD(char cmd[]) {
     
-    if (strcmp(cmd, "mkdir") == 0)
+    if (strcmp(cmd, "/bin/mkdir") == 0)
         return true;
-    if (strcmp(cmd, "ls") == 0)
+    if (strcmp(cmd, "/bin/ls") == 0)
         return true;
-    if (strcmp(cmd, "cp") == 0)
+    if (strcmp(cmd, "/bin/cp") == 0)
         return true;
-    if (strcmp(cmd, "mv") == 0)
+    if (strcmp(cmd, "/bin/mv") == 0)
         return true;
-    if (strcmp(cmd, "vi") == 0)
+    if (strcmp(cmd, "/bin/vi") == 0)
         return true;
     else
         return false;
@@ -29,7 +29,7 @@ int main(int argc, char *argv[]) {
     int ret = 1; 
     int status; 
     //extract command root
-    char* cmd  = argv[1];
+    char* cmd  = "/bin/"+argv[1];
     if (validateCMD(cmd)) {
         //extract command parameters
         int PARMCOUNT = argc;
@@ -43,7 +43,7 @@ int main(int argc, char *argv[]) {
                 parm[index] = argv[index+1];
             //assign numm to end of argument list
             parm[PARMCOUNT-1] = NULL;
-
+            printf("%i\n", PARMCOUNT);
             for (int index = 0; index < argc; index++)
                 printf("%s\n", parm[index]);
             //create child process to run command
