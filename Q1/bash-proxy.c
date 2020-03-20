@@ -4,6 +4,7 @@
 #include <stdlib.h> 
 #include <errno.h> 
 #include <sys/wait.h> 
+#include <string.h> 
 
 int main(int argc, char *argv[]){ 
     pid_t pid; 
@@ -13,8 +14,8 @@ int main(int argc, char *argv[]){
     char* cmd; 
     char* rest = argv[0]; 
   
-    while ((token = strtok_r(rest, " ", &rest))) 
-        printf("%s\n", token); 
+    while ((cmd = strtok_r(rest, " ", &rest))) 
+        printf("%s\n", cmd); 
     //populate commands and correspoding arguments
     //getCMD(argc, argv, cmd_root);
     
