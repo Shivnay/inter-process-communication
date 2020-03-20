@@ -13,18 +13,20 @@ int main(int argc, char *argv[]){
     //extract command root
     char cmd[]  = argv[1];
     //extract command parameters
-    cont int PARMCOUNT = argc - 2;
+    int PARMCOUNT = argc - 2;
     //make sure arguments provided
-    if (pramCount != 0) {
+    if (PARMCOUNT != 0) {
         char* parm[PARMCOUNT];
         //fill parmater array
         for (int index = 2; index < argc; index++)
             parm[index-2] = argv[index];
+
+        printf("%s/n", cmd);
+        printf("%s/n", parm);
     } else 
         printf("no arguments provided");
     
-    printf("%s/n", cmd);
-    printf("%s/n", parm);
+    
     // pid = fork(); 
     // if (pid == -1){ 
     //     //error occured 
