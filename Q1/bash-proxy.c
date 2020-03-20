@@ -10,16 +10,14 @@ int main(int argc, char *argv[]){
     pid_t pid; 
     int ret = 1; 
     int status; 
-    //
-    char* cmd; 
-    char* rest = argv[1]; 
-  
-    while ((cmd = strtok_r(rest, ";", &rest))) {
-        printf("%s\n", cmd); 
-    }
-        
-    //populate commands and correspoding arguments
-    //getCMD(argc, argv, cmd_root);
+    //extract command root
+    char* cmd  = strtok(argv[1], "-");
+    //extract command parameters
+    char* token  = cmd;
+    while (token  != NULL) { 
+        printf("%s\n", token); 
+        token  = strtok(NULL, "-"); 
+    } 
     
     // pid = fork(); 
     // if (pid == -1){ 
