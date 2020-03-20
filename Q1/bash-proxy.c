@@ -11,12 +11,12 @@ int main(int argc, char *argv[]){
     int ret = 1; 
     int status; 
     //extract command root
-    char* cmd  = strtok(argv[1], "-");
+    char* cmd  = strtok(argv[1], " ");
     //extract command parameters
     char* token  = cmd;
     while (token  != NULL) { 
         printf("%s\n", token); 
-        token  = strtok(NULL, "-"); 
+        token  = strtok(NULL, " "); 
     } 
     
     // pid = fork(); 
