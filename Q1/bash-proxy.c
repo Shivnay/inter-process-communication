@@ -8,16 +8,17 @@
 #include <stdbool.h>
 
 //approved bash commands
-bool validateCMD(char* cmd) {
+bool validateCMD(char cmd[]) {
+    
     if (cmd == "mkdir")
         return true;
-    else if (cmd == "ls")
+    if (cmd == "ls")
         return true;
-    else if (cmd == "cp")
+    if (cmd == "cp")
         return true;
-    else if (cmd == "mv")
+    if (cmd == "mv")
         return true;
-    else if (cmd == "vi")
+    if (cmd == "vi")
         return true;
     else
         return false;
@@ -75,7 +76,7 @@ int main(int argc, char *argv[]) {
         } else 
             printf("no arguments provided\n");
     } else 
-        printf("bash command not supported\n");
+        printf("bash: command not supported.\n");
     
     return 0; 
 } 
