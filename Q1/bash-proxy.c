@@ -5,22 +5,22 @@
 #include <errno.h> 
 #include <sys/wait.h> 
 #include <string.h>  
+#include <stdbool.h>
 
 //approved bash commands
 bool validateCMD(char* cmd) {
-    switch(cmd) {
-        case "mkdir" :
-            return true;
-        case "ls" :
-            return true;
-        case "cp" :
-            return true;
-        case "mv" :
-            return true;
-        case "vi" :
-            return true;
-        default :
-            return false;
+    if (cmd == "mkdir")
+        return true;
+    else if (cmd == "ls")
+        return true;
+     else if (cmd == "cp")
+        return true;
+     else if (cmd == "mv")
+        return true;
+    else if (cmd == "vi")
+        return true;
+     else
+        return false;
     }
 }
 
