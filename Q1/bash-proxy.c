@@ -13,17 +13,17 @@ bool validateCMD(char* cmd) {
         return true;
     else if (cmd == "ls")
         return true;
-     else if (cmd == "cp")
+    else if (cmd == "cp")
         return true;
-     else if (cmd == "mv")
+    else if (cmd == "mv")
         return true;
     else if (cmd == "vi")
         return true;
-     else
+    else
         return false;
 }
 
-int main(int argc, char *argv[]){ 
+int main(int argc, char *argv[]) { 
     pid_t pid; 
     int ret = 1; 
     int status; 
@@ -40,11 +40,11 @@ int main(int argc, char *argv[]){
                 parm[index-2] = argv[index];
             //create child process to run command
             pid = fork(); 
-            if (pid == -1){ 
+            if (pid == -1) { 
                 //error occured 
                 printf("can't fork, error occured\n"); 
                 exit(EXIT_FAILURE); 
-            } else if (pid == 0){ 
+            } else if (pid == 0) { 
                 // child process created 
                 printf("child process, pid = %u\n",getpid()); 
                 //execute command
@@ -58,7 +58,6 @@ int main(int argc, char *argv[]){
                     //successful execution
                     if (WIFEXITED(status) && !WEXITSTATUS(status)) 
                         printf("program execution successful\n"); 
-                    //error might have occured
                     else if (WIFEXITED(status) && WEXITSTATUS(status)) { 
                         //execution failed
                         if (WEXITSTATUS(status) == 127) { 
