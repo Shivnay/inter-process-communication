@@ -10,7 +10,7 @@ void *myThreadFun(void *vargp)
 	int max;
     //get max number of primes
     printf("Enter max prime number: ");
-    scanf("%i",max);
+    scanf("%d",&max);
     //incremental loop to max prime estimte provided
     for (int number = 2; number < max; number++) {
         int isPrime = 1;

@@ -50,38 +50,38 @@ int main(int argc, char *argv[]) {
             pid = fork(); 
             if (pid == -1) { 
                 //error occured 
-                printf("can't fork, error occured\n"); 
+                printf("BASH-PROXY: child process couldn't be created.\n"); 
                 exit(EXIT_FAILURE); 
             } else if (pid == 0) { 
                 // child process created 
-                printf("child process, pid = %u\n",getpid()); 
+                printf("BASH-PROXY: child process, pid = %u\n",getpid()); 
                 //execute command
                 execv(cmd,parm); 
                 exit(0); 
             } else { 
                 // a positive number is returned for the pid of parent process 
-                printf("parent process, pid = %u\n",getppid()); 
+                printf("BASH-PROXY: parent process, pid = %u\n",getppid()); 
                 // check execution and child process state
                 if (waitpid(pid, &status, 0) > 0) { 
                     //successful execution
                     if (WIFEXITED(status) && !WEXITSTATUS(status)) 
-                        printf("program execution successful\n"); 
+                        printf("BASH-PROXY: command execution successful.\n"); 
                     else if (WIFEXITED(status) && WEXITSTATUS(status)) { 
                         //execution failed
                         if (WEXITSTATUS(status) == 127) { 
-                            // execv failed 
-                            printf("execv failed\n"); 
+                            //execv failed 
+                            printf("BASH-PROXY: command failed.\n"); 
                         } else
-                            printf("program terminated normally, but returned a non-zero status\n");				 
+                            printf("BASH-PROXY: command terminated normally, but returned a non-zero status.\n");				 
                     } else
-                        printf("program didn't terminate normally\n");			 
+                        printf("BASH-PROXY: program didn't terminate normally.\n");			 
                 } else
-                    printf("waitpid() failed\n"); 
+                    printf("BASH-PROXY: waitpid() failed.\n"); 
 
                 exit(0); 
             }
         } else 
-            printf("no arguments provided\n");
+            printf("BASH-PROXY: no arguments provided.\n");
     } else 
         printf("BASH-PROXY: command not supported.\n");
     
