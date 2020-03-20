@@ -12,10 +12,12 @@ int main(int argc, char *argv[]){
     int status; 
     //
     char* cmd; 
-    char* rest = argv[0]; 
+    char* rest = argv[1]; 
   
-    while ((cmd = strtok_r(rest, " ", &rest))) 
+    while ((cmd = strtok_r(rest, ";", &rest))) {
         printf("%s\n", cmd); 
+    }
+        
     //populate commands and correspoding arguments
     //getCMD(argc, argv, cmd_root);
     
