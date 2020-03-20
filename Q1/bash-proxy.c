@@ -29,10 +29,11 @@ int main(int argc, char *argv[]) {
     int ret = 1; 
     int status; 
     //extract command root
+    //concat full bash command path '/bin/command'
     char* cmd_raw = argv[1];
-    char* cmd = malloc(strlen(cmd_raw)+1+5); /* make space for the new string (should check the return value ...) */
-    strcpy(cmd, "/bin/"); /* copy name into the new var */
-    strcat(cmd, cmd_raw); /* add the extension */;
+    char* cmd = malloc(strlen(cmd_raw)+1+5);
+    strcpy(cmd, "/bin/"); 
+    strcat(cmd, cmd_raw); 
 
     if (validateCMD(cmd)) {
         //extract command parameters
@@ -82,7 +83,7 @@ int main(int argc, char *argv[]) {
         } else 
             printf("no arguments provided\n");
     } else 
-        printf("bash: command not supported.\n");
+        printf("BASH-PROXY: command not supported.\n");
     
     return 0; 
 } 
